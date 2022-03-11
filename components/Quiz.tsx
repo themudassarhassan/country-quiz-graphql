@@ -53,7 +53,7 @@ export const Quiz: FC<{ countries: ICountry[]}> = ({ countries }) => {
           <Result score={score} onReset={resetGame} />
         ) : (
           <>
-            <div className="absolute top-0 right-0">
+            <div className="absolute top-[-40px] right-0 md:top-0">
               <Image alt="image" src={quizImage} />
             </div>
             <Question
