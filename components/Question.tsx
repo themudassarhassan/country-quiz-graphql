@@ -14,7 +14,6 @@ export const Question = ({question, userAnswer, onOptionClick}: QuestionProps) =
     statement,
     options,
     correctAnswer,
-    flag,
   } = question;
 
   const getStatus = (option: any) => {
@@ -30,7 +29,6 @@ export const Question = ({question, userAnswer, onOptionClick}: QuestionProps) =
 
   return (
     <div className="quiz-question">
-      {flag && <Image src={flag} height="50" width="100" alt="flag" />}
       <p className="text-blue-600 font-bold text-2xl leading-8">{statement}</p>
       {options.map((option, index) => (
         <Option

@@ -1,9 +1,8 @@
-import { IQuestion } from "../types";
+import { IQuestion, ICountry } from '../types';
 
 export function generateCapitalQuestion(countriesData: ICountry[], qIndex: number) {
   const question: IQuestion = {
     statement: '',
-    flag: '',
     correctAnswer: '',
     options: [],
   };
@@ -19,6 +18,8 @@ export function generateCapitalQuestion(countriesData: ICountry[], qIndex: numbe
     if (options.indexOf(countriesData[index].name) === -1)
       options.push(countriesData[index].name);
   }
+
+  // randomize options so correct answer gets shuffled
   options.sort(function () {
     return 0.5 - Math.random();
   });

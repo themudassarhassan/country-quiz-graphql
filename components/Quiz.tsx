@@ -10,7 +10,6 @@ export const Quiz: FC<{ countries: ICountry[]}> = ({ countries }) => {
   const [question, setQuestion] = React.useState<IQuestion>({
     statement: '',
     correctAnswer: '',
-    flag: '',
     options: [],
   });
   const [userAnswer, setUserAnswer] = React.useState('');
@@ -28,7 +27,7 @@ export const Quiz: FC<{ countries: ICountry[]}> = ({ countries }) => {
       setUserAnswer(option);
       if (option === question.correctAnswer) setScore(score + 1);
       else {
-        setTimeout(() => setIsResultVisible(true), 500);
+        setTimeout(() => setIsResultVisible(true), 1000);
       } 
     }
   }

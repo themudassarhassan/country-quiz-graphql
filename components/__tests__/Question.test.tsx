@@ -24,7 +24,6 @@ test('it renders question component correctly with all options', () => {
   <div
     class="quiz-question"
   >
-    
     <p
       class="text-blue-600 font-bold text-2xl leading-8"
     >
