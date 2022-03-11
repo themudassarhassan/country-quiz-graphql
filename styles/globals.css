@@ -1,16 +1,21 @@
-html,
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background-color: #f4f6f8;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-* {
-  box-sizing: border-box;
+@layer components {
+  .question-option {
+    @apply text-blue-600 w-full leading-7 text-xl font-bold flex mt-6 p-5 rounded-xl border-2 border-blue-600 hover:text-white hover:bg-yellow-400 hover:border-yellow-400;
+  }
+  
+  .correct-answer {
+    @apply bg-green-400 text-white border-none hover:bg-green-400;
+  }
+  
+  .wrong-answer {
+    @apply bg-red-400 text-white border-none hover:bg-red-400;
+  }
 }
