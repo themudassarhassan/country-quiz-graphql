@@ -7,7 +7,6 @@ const question: IQuestion = {
   statement: 'queston statement',
   options: ['first', 'second', 'third', 'fourth'],
   correctAnswer: 'first',
-  flag: '',
 };
 
 test('it renders question component correctly with all options', () => {
