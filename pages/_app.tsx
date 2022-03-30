@@ -21,9 +21,12 @@ function generateNonce() {
   return randomBytes(12).toString('base64');
 }
 
-function MyApp({ Component, pageProps, nonce }: AppProps & { nonce: string }) {
+function MyApp({ Component, pageProps }: AppProps & { nonce: string }) {
   const router = useRouter();
   const isClientSide = router.pathname.includes('client-side');
+  
+  const nonce = generateNonce();
+  const csp = getCSP(nonce);
   
   const gtmParams = { id: 'GTM-MSCKRX9', nonce: nonce };
 
@@ -40,7 +43,7 @@ function MyApp({ Component, pageProps, nonce }: AppProps & { nonce: string }) {
       <Head>
         <title>My country quiz</title>
         <meta name="description" content="This is a beautiful country quiz application." />
-        {/* <meta httpEquiv="Content-Security-Policy" content={csp}  /> */}
+        <meta httpEquiv="Content-Security-Policy" content={csp}  />
       </Head>
       <GTMProvider state={gtmParams}>
         <Component {...pageProps} />    
@@ -49,18 +52,18 @@ function MyApp({ Component, pageProps, nonce }: AppProps & { nonce: string }) {
   );
 }
 
-MyApp.getInitialProps = async (appContext: AppContext) => {
-  // calls page's `getInitialProps` and fills `appProps.pageProps`
-  const appProps = await App.getInitialProps(appContext);
+// MyApp.getInitialProps = async (appContext: AppContext) => {
+//   // calls page's `getInitialProps` and fills `appProps.pageProps`
+//   const appProps = await App.getInitialProps(appContext);
 
-  const nonce = generateNonce();
-  const csp = getCSP(nonce);
-  const res = appContext.ctx?.res;
-  if (res != null) {
-    res.setHeader('Content-Security-Policy', csp);
-  }
+//   const nonce = generateNonce();
+//   const csp = getCSP(nonce);
+//   const res = appContext.ctx?.res;
+//   if (res != null) {
+//     res.setHeader('Content-Security-Policy', csp);
+//   }
 
-  return { ...appProps, nonce };
-};
+//   return { ...appProps, nonce };
+// };
 
 export default MyApp;
