@@ -21,7 +21,7 @@ function generateNonce() {
   return randomBytes(12).toString('base64');
 }
 
-function MyApp({ Component, pageProps, nonce }: AppProps) {
+function MyApp({ Component, pageProps, nonce }: AppProps & { nonce: string }) {
   const router = useRouter();
   const isClientSide = router.pathname.includes('client-side');
   
