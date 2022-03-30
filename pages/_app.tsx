@@ -14,7 +14,7 @@ function getCSP(nonce: string) {
     script-src 'self' '${process.env.NODE_ENV === 'development' ? 'unsafe-eval' : ''}' 'nonce-${nonce}' https://www.googletagmanager.com;
     object-src 'none';  
   `;
-  return contentSecurityPolicy .replace(/\s{2,}/g, ' ').trim();
+  return contentSecurityPolicy.replace(/\s{2,}/g, ' ').trim();
 }
 
 function generateNonce() {
